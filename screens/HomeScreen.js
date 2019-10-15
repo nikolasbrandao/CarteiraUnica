@@ -47,6 +47,7 @@ export default class HomeScreen extends Component{
           <View style={styles.getStartedContainer}>
               {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> }
           </View>
+          <Text>Oi eu sou Jean</Text>
         </ScrollView>
       </View>
     );
