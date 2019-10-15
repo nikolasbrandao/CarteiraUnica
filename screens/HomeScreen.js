@@ -46,7 +46,7 @@ export default class HomeScreen extends Component{
             />
           </View>
   
-          <Text style={{marginHorizontal: 16}}>Oi eu sou Jean.</Text>
+          <Text style={{marginHorizontal: 16}}>Digite os elementos considerados instruendos:</Text>
           <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 16,}}>
             <View style={{marginRight: 16,}}>
                 {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> }
