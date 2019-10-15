@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   View,
   CheckBox,
-  Switch
+  Switch,
+  TextInput,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
@@ -19,7 +20,8 @@ export default class HomeScreen extends Component{
   constructor(props){
     super(props);
     this.state = {
-      estaAtivado: true,
+      estaAtivado: false,
+      text: '',
     };
   }
 
@@ -44,10 +46,18 @@ export default class HomeScreen extends Component{
             />
           </View>
   
-          <View style={styles.getStartedContainer}>
-              {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> }
+          <Text style={{marginHorizontal: 16}}>Oi eu sou Jean.</Text>
+          <View style={{flexDirection: 'row', alignItems: 'center', marginHorizontal: 16,}}>
+            <View style={{marginRight: 16,}}>
+                {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> }
+            </View>
+            <TextInput 
+              style={{height: 40,borderColor: 'gray', borderWidth: 1 , paddingHorizontal: 16, marginVertical: 16, borderRadius: 4, flex: 1,}}
+              placeholder='Digite aqui'
+              onChangeText = {(text) => this.setState({text})}
+              value = {this.state.text}
+            />
           </View>
-          <Text>Oi eu sou Jean</Text>
         </ScrollView>
       </View>
     );
