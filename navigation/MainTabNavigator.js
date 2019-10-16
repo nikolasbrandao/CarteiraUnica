@@ -4,73 +4,108 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import NikolasScreen from '../screens/NikolasScreen';
+import JeanScreen from '../screens/JeanScreen';
+import EmannuelScreen from '../screens/EmannuelScreen';
+import LayaneScreen from '../screens/LayaneScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
   default: {},
 });
 
-const HomeStack = createStackNavigator(
+// const HomeStack = createStackNavigator(
+//   {
+//     Home: HomeScreen,
+//   },
+//   config
+// );
+
+// HomeStack.navigationOptions = {
+//   tabBarLabel: 'Home',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+
+// HomeStack.path = '';
+
+const NikolasStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Nikolas: NikolasScreen,
   },
   config
 );
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-HomeStack.path = '';
-
-const LinksStack = createStackNavigator(
-  {
-    Links: LinksScreen,
-  },
-  config
-);
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
-};
-
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen,
-  },
-  config
-);
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Perfil',
+NikolasStack.navigationOptions = {
+  tabBarLabel: 'Nikolas',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
   ),
 };
 
-SettingsStack.path = '';
+NikolasStack.path = '';
+
+const JeanStack = createStackNavigator(
+  {
+    Jean: JeanScreen,
+  },
+  config
+);
+
+JeanStack.navigationOptions = {
+  tabBarLabel: 'Jean',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
+  ),
+};
+
+JeanStack.path = '';
+
+const EmannuelStack = createStackNavigator(
+  {
+    Emannuel: EmannuelScreen,
+  },
+  config
+);
+
+EmannuelStack.navigationOptions = {
+  tabBarLabel: 'Emannuel',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
+  ),
+};
+
+EmannuelStack.path = '';
+
+const LayaneStack = createStackNavigator(
+  {
+    Layane: LayaneScreen,
+  },
+  config
+);
+
+LayaneStack.navigationOptions = {
+  tabBarLabel: 'Layane',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
+  ),
+};
+
+LayaneStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  NikolasStack,
+  JeanStack,
+  EmannuelStack,
+  LayaneStack,
 });
 
 tabNavigator.path = '';
