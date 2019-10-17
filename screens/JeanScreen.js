@@ -11,9 +11,15 @@ import {
   CheckBox,
   Switch,
   TextInput,
+  Button,
+  Alert,
+  Vibration,
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+
+const DURATION = 10000 ;
+const PATTERN = [ 1000, 2000, 3000, 4000] ;
 
 export default class JeanScreen extends Component{
 
@@ -31,6 +37,14 @@ export default class JeanScreen extends Component{
 
   modificaEstadoInput(value) {
     this.setState({text: value});
+  }
+
+  StartVibrationFunction=()=>{
+  Vibration.vibrate(DURATION) ;
+  }
+
+  StopVibrationFunction=()=>{
+    Vibration.cancel();
   }
 
   render() {
@@ -51,8 +65,23 @@ export default class JeanScreen extends Component{
               value = {this.state.text}
             />
           </View>
+          <View style={estilo.c_Button}>
+            <Button
+              title="Ativar"
+              // onPress={() => Alert.alert('Simple Button pressed')}
+              onPress={this.StartVibrationFunction}
+              />
+          </View>
+          <View style={estilo.c_Button}>          
+            <Button
+              title="Desativar"
+              color="#f194ff"
+              // onPress={() => Alert.alert('Simple Button pressed')}
+              onPress={this.StopVibrationFunction}
+            />
+            </View>
         </ScrollView>
-      </View>
+          </View>
     );
   }
 }
@@ -61,6 +90,43 @@ JeanScreen.navigationOptions = {
   // title: 'Jean Paul',
   header: null,
 };
+
+const estilo = StyleSheet.create({
+  estiloTexto: {
+    color: 'blue',
+    paddingLeft: 16,
+    fontSize: 22,
+  },
+  c_Button:{
+    padding: 16,
+  },
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
