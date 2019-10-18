@@ -39,6 +39,7 @@ export default class JeanScreen extends Component{
     this.setState({text: value});
   }
 
+
   StartVibrationFunction=()=>{
   Vibration.vibrate(DURATION) ;
   }
@@ -65,21 +66,23 @@ export default class JeanScreen extends Component{
               value = {this.state.text}
             />
           </View>
-          <View style={estilo.c_Button}>
-            <Button
-              title="Ativar"
-              // onPress={() => Alert.alert('Simple Button pressed')}
-              onPress={this.StartVibrationFunction}
-              />
-          </View>
-          <View style={estilo.c_Button}>          
-            <Button
-              title="Desativar"
-              color="#f194ff"
-              // onPress={() => Alert.alert('Simple Button pressed')}
-              onPress={this.StopVibrationFunction}
-            />
+          <View style={{flexDirection: 'row'}}>
+            <View style={estilo.c_Button}>
+              <Button
+                title="Ativar"
+                // onPress={() => Alert.alert('Simple Button pressed')}
+                onPress={this.StartVibrationFunction}
+                />
             </View>
+            <View style={estilo.c_Button}>          
+              <Button
+                title="Desativar"
+                color="#f194ff"
+                // onPress={() => Alert.alert('Simple Button pressed')}
+                onPress={this.StopVibrationFunction}
+              />
+              </View>
+          </View>
         </ScrollView>
           </View>
     );
@@ -98,6 +101,7 @@ const estilo = StyleSheet.create({
     fontSize: 22,
   },
   c_Button:{
+    flex: 1,
     padding: 16,
   },
 })
