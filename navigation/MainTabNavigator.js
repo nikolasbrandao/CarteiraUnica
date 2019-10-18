@@ -79,7 +79,7 @@ const EmannuelStack = createStackNavigator(
 EmannuelStack.navigationOptions = {
   tabBarLabel: 'Emannuel',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contact' : 'md-contact'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-happy' : 'logo-game-controller-b'} />
   ),
 };
 
