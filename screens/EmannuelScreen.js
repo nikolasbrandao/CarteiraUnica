@@ -27,9 +27,16 @@ export default class EmannuelScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: '#F8F8F8', marginTop: 8}}>
+      <ScrollView style={{ flex: 1, backgroundColor: '#F8F8F8', padding: 16 }}>
+        
         <CardDespesa nome ='Jean' data= '22/11/2019'/>
-        <CardMenu/>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+          <CardMenu nomeIcon = 'ios-folder-open' nomeCategoria= 'Meus arquivos'/>
+          <CardMenu nomeIcon = 'ios-image' nomeCategoria= 'Imagens'/>
+          <CardMenu nomeIcon = 'ios-musical-notes' nomeCategoria= 'Músicas'/>
+          <CardMenu nomeIcon = 'ios-settings' nomeCategoria= 'Configurações'/>
+        </View>
+
       </ScrollView>
     );
   }

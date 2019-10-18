@@ -20,14 +20,16 @@ export default class CardDespesa extends Component {
     render() {
         return (
             <TouchableOpacity>
-                <View style={ estilo.e_card }>
-                    <Text style={ estilo.card_title }>
-                        <Ionicons name="ios-folder" size={16} color="#FF960B" />
-                        { this.props.nome }
-                    </Text>
-                    <Text style={ estilo.card_subTitle }>{ this.props.data }</Text>
-                    <Text style={ estilo.card_desc }>R$ 000.000.000,00</Text>
-                    <Text style={ estilo.card_subTitle }>11 - Mateus Supermercados - Cid Operária</Text>
+                <View style={estilo.e_card}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ marginRight: 8 }}>
+                            <Ionicons name="md-contact" size={16} color="#149BAA" />
+                        </View>
+                        <Text style={estilo.card_title}>{this.props.nome}</Text>
+                    </View>
+                    <Text style={estilo.card_subTitle}>{this.props.data}</Text>
+                    <Text style={estilo.card_desc}>R$ 000.000.000,00</Text>
+                    <Text style={estilo.card_subTitle}>11 - Mateus Supermercados - Cid Operária</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -52,11 +54,9 @@ const estilo = StyleSheet.create({
     },
     e_card: {
         backgroundColor: 'white',
-        alignSelf: 'stretch',
-        marginVertical: 8,
-        marginHorizontal: 16,
         padding: 16,
         borderRadius: 8,
         elevation: 3,
+        marginBottom: 16
     }
 })
