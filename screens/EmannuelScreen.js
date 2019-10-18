@@ -1,5 +1,5 @@
 import * as WebBrowser from 'expo-web-browser';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Image,
   Platform,
@@ -11,11 +11,14 @@ import {
   CheckBox,
   Switch,
   TextInput,
+  Button,
 } from 'react-native';
+import CardDespesa from '../components/card/cardDespesa.component';
+import CardMenu from '../components/card/cardMenu.component';
 
-export default class EmannuelScreen extends Component{
+export default class EmannuelScreen extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
 
@@ -24,13 +27,15 @@ export default class EmannuelScreen extends Component{
 
   render() {
     return (
-      <View>
-        <Text>Emannuel Teixeira</Text>
-      </View>
+      <ScrollView style={{ flex: 1, backgroundColor: '#F8F8F8', marginTop: 8}}>
+        <CardDespesa nome ='Jean' data= '22/11/2019'/>
+        <CardMenu/>
+      </ScrollView>
     );
   }
 }
 
 EmannuelScreen.navigationOptions = {
-  title: 'Emannuel Teixeira',
+  title: 'Minha Tela',
+  //header: null,  
 };
