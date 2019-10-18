@@ -23,7 +23,7 @@ export default class CardDespesa extends Component {
                 <View style={estilo.e_card}>
                     <View style={{ flexDirection: 'row' }}>
                         <View style={{ marginRight: 8 }}>
-                            <Ionicons name="md-contact" size={16} color="#149BAA" />
+                            <Ionicons name="ios-paper" size={16} color="#FFE44D" />
                         </View>
                         <Text style={estilo.card_title}>{this.props.nome}</Text>
                     </View>
@@ -38,7 +38,7 @@ export default class CardDespesa extends Component {
 
 const estilo = StyleSheet.create({
     card_title: {
-        color: '#00232F',
+        color: '#606668',
         fontSize: 14,
         fontFamily: 'Montserrat-SemiBold'
     },
@@ -56,7 +56,8 @@ const estilo = StyleSheet.create({
         backgroundColor: 'white',
         padding: 16,
         borderRadius: 8,
-        elevation: 3,
+        borderBottomColor: '#EFEFEF',
+        borderBottomWidth: 2,
         marginBottom: 16
     }
 })

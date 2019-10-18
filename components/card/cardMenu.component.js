@@ -14,15 +14,18 @@ export default class CardMenu extends Component {
         this.state = {
             nomeCategoria: '',
             nomeIcon: '',
+            colorIcon: '',
         };
     }
 
     render() {
         return (
-            <TouchableOpacity style= {{ width: '47.5%' }}>
+            <TouchableOpacity style = {{ width: '47.5%' }}>
                 <View style={ estilo.e_card }>
-                    <Ionicons name={ this.props.nomeIcon } size={32} color="#FF960B" />
-                    <Text style={ estilo.card_title }>{ this.props.nomeCategoria }</Text>
+                    <View style = {{ backgroundColor: '#F8F8F8', borderRadius: 100, width: 46, height: 46, alignItems: 'center', justifyContent: 'center' }}>
+                        <Ionicons name = { this.props.nomeIcon } size = {26} color = { this.props.colorIcon } />
+                    </View>
+                    <Text style = { estilo.card_title }>{ this.props.nomeCategoria }</Text>
                 </View>                
             </TouchableOpacity>
         );
@@ -36,12 +39,13 @@ const estilo = StyleSheet.create({
         padding: 16,
         marginBottom: 16,
         borderRadius: 8,
-        elevation: 3,
+        borderBottomColor: '#EFEFEF',
+        borderBottomWidth: 2,
         backgroundColor: 'white',
     },
     card_title: {
-        color: '#00232F',
-        fontSize: 16,
+        color: '#606668',
+        fontSize: 14,
         fontFamily: 'Montserrat-Medium'
     },
 })
