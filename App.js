@@ -22,7 +22,7 @@ export default function App(props) {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" hidden={true}/>
-        <View style={{marginHorizontal: 16, marginRight: 8, paddingHorizontal: 8, position:'absolute'}}><AppNavigator/></View>
+        <AppNavigator/>
       </View>
     );
   }

@@ -11,9 +11,12 @@ import {
   CheckBox,
   Switch,
   TextInput,
+  FlatList
 } from 'react-native';
 
 import { MonoText } from '../components/StyledText';
+import CardDespesa from '../components/card/cardDespesa.component';
+
 
 export default class NikolasScreen extends Component{
 
@@ -22,39 +25,41 @@ export default class NikolasScreen extends Component{
     this.state = {
       estaAtivado: false,
       text: '',
+      listaDeDespesas : [
+        {
+          nome: 'Nikolas',
+          data: '16/10/2019'
+        },
+        {
+          nome: 'Layane',
+          data: '17/10/2019'
+        },
+        {
+          nome: 'Jean',
+          data: '14/10/2019'
+        },
+        {
+          nome: 'Emanuel',
+          data: '12/10/2019'
+        },
+      ]
     };
   }
 
-  modificaEstadoToggle(value) {
-    this.setState({estaAtivado: value});
-  }
-
-  modificaEstadoInput(value) {
-    this.setState({text: value});
+  renderCardsDespesa(item, index) {
+    const {nome, data} = item;
+    return (
+      <CardDespesa nome={nome} data={data}/>
+    );
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
-  
-          <View style={{marginRight: 16,}}>
-              {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado}/> }
-          </View>
-          <Text style={{marginHorizontal: 16}}>Nikolas</Text>
-        </ScrollView>
+        <FlatList
+          data={this.state.listaDeDespesas}
+          renderItem={( {item, index} ) =>  this.renderCardsDespesa(item, index)}
+        />
       </View>
     );
   }
@@ -65,45 +70,12 @@ NikolasScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#00232f',
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
   developmentModeText: {
     marginBottom: 20,
