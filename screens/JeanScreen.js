@@ -1,69 +1,58 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
-import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, CheckBox, Switch, TextInput, Button, Alert, Vibration, } from 'react-native';
-
-
-const DURATION = 10000;
-const PATTERN = [1000, 2000, 3000, 4000];
+import {PanResponder, Animated, Easing, Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, CheckBox, Switch, TextInput, Button, Alert, Vibration, } from 'react-native';
 
 export default class JeanScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      estaAtivado: false,
-      text: '',
+      pan: new Animated.ValueXY(),
+      scale: new Animated.Value(1),
     };
   }
 
-  modificaEstadoToggle(value) {
-    this.setState({ estaAtivado: value });
-  }
-
-  modificaEstadoInput(value) {
-    this.setState({ text: value });
-  }
-
-
-  StartVibrationFunction = () => {
-    Vibration.vibrate(DURATION);
-  }
-
-  StopVibrationFunction = () => {
-    Vibration.cancel();
+  componentWillMount() {
+    this._panResponder = PanResponder.create({
+      onMoveShouldSetResponderCapture: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
+      onPanResponderGrant: (evt, gestureState) => {
+        this.state.pan.setOffset({
+          x: this.state.pan.x._value,
+          y: this.state.pan.y._value
+        });
+        this.state.pan.setValue({x: 0, y: 0})
+        Animated.spring(this.state.scale,{
+          toValue: 1.3,
+          friction: 3
+        }).start();
+      },
+      onPanResponderMove: Animated.event([
+        null,
+        {dx: this.state.pan.x, dy: this.state.pan.y}
+      ]),
+      onPanResponderRelease: (evt, gestureState) => {
+        this.state.pan.flattenOffset();
+        Animated.spring(this.state.scale,{
+          toValue: 1,
+          friction: 3,
+        }).start();
+      }
+    });
   }
 
   render() {
     return (
-      <ScrollView>
-        <Text>Digite os elementos considerados instruendos: </Text>
-        <View>
-          <View>
-            {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado} /> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado} />}
-          </View>
-          <TextInput
-            onChangeText={(value) => this.modificaEstadoInput({ value })}
-            style={styles.textEstilo1}
-            placeholder='Digite aqui'
-            value={this.state.text}
-          />
-        </View>
-        <View>
-          <View style={styles.c_Button}>
-            <Button
-              title="Ativar"
-              onPress={this.StartVibrationFunction}
-            />
-          </View>
-          <View style={styles.c_Button}>
-            <Button
-              title="Desativar"
-              color="#f194ff"
-              onPress={this.StopVibrationFunction}
-            />
-          </View>
-        </View>
-      </ScrollView>
+      <View style={styles.container}>
+        <Animated.View style={[styles.animationView,
+        {transform: [
+          {translateX: this.state.pan.x},
+          {translateY: this.state.pan.y},
+          {scale: this.state.scale},
+          ]}]} {...this._panResponder.panHandlers}>
+          <Image></Image>
+        </Animated.View>
+      </View>
     );
   }
 }
@@ -73,16 +62,16 @@ JeanScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
-  estiloTexto: {
-    color: 'blue',
-    paddingLeft: 16,
-    fontSize: 22,
-  },
-  c_Button: {
+  container: {
     flex: 1,
-    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  textEstilo1: {
-    color: 'red',
+  animationView: {
+    height: 100,
+    width: 100,
+    backgroundColor: 'skyblue',
+    borderRadius: 50,
+    position: 'absolute'
   },
 })

@@ -1,14 +1,35 @@
-// import React from 'react';
-// import { ExpoConfigView } from '@expo/samples';
+// export default class SetingsScreen extends Component {
 
-// export default function SettingsScreen() {
-//   /**
-//    * Go ahead and delete ExpoConfigView and replace it with your content;
-//    * we just wanted to give you a quick view of your config.
-//    */
-//   return <ExpoConfigView />;
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       text: '',
+//     };
+//   }
+
+//   modificaEstadoToggle(value) {
+//     this.setState({ estaAtivado: value });
+//   }
+
+//   modificaEstadoInput(value) {
+//     this.setState({ text: value });
+//   }
+
+//   render() {
+//     return (
+//       <ScrollView>
+//         <View>
+//           <View>
+//             {Platform.OS === 'ios' ? <Switch onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado} /> : <CheckBox onValueChange={(value) => this.modificaEstadoToggle(value)} value={this.state.estaAtivado} />}
+//           </View>
+//           <TextInput
+//             onChangeText={(value) => this.modificaEstadoInput({ value })}
+//             style={styles.textEstilo1}
+//             placeholder='Digite aqui'
+//             value={this.state.text}
+//           />
+//         </View>
+//       </ScrollView>
+//     );
+//   }
 // }
-
-// SettingsScreen.navigationOptions = {
-//   title: 'app.json',
-// };
