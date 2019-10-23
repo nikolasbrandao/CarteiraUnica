@@ -29,15 +29,9 @@ export default class VibrationComp extends Component {
             <Button
               title="Vibrar 0.1 seg"
               onPress={this.StartVibrationFunction}
+              color= 'skyblue'
             />
           </View>
-          {/* <View style={styles.c_Button}>
-            <Button
-              title="Desativar"
-              color="#f194ff"
-              onPress={this.StopVibrationFunction}
-            />
-          </View> */}
         </View>
     );
   }
