@@ -1,8 +1,8 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
-import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, CheckBox, Switch, TextInput, Button, Alert, Vibration, } from 'react-native';
+import { Image, Platform, TouchableHighlight, StyleSheet, Text, TouchableOpacity, View, CheckBox, Switch, TextInput, Button, Alert, Vibration, } from 'react-native';
 
-const DURATION = 100;
+const DURATION = 1000;
 const PATTERN = [1000, 2000, 3000, 4000];
 
 export default class VibrationComp extends Component {
@@ -15,7 +15,7 @@ export default class VibrationComp extends Component {
   }
 
   StartVibrationFunction = () => {
-    Vibration.vibrate(DURATION);
+    Vibration.vibrate(this.props.duracao);
   }
 
   StopVibrationFunction = () => {
@@ -24,17 +24,18 @@ export default class VibrationComp extends Component {
 
   render() {
     return (
-        <View>
-          <View style={styles.c_Button}>
-            <Button
-              title="Vibrar 0.1 seg"
-              onPress={this.StartVibrationFunction}
-              color= 'skyblue'
-            />
-          </View>
+      <TouchableOpacity style={{flex: 1}} onPress={() => this.StartVibrationFunction()}>
+        <View style={{backgroundColor: this.props.cor}}>
+          {this.props.children}
         </View>
+      </TouchableOpacity>
     );
   }
+}
+
+VibrationComp.defaultProps = {
+  cor: 'blue',
+  duracao: 1000,
 }
 
 const styles = StyleSheet.create({

@@ -1,6 +1,14 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { Component } from 'react';
-import {PanResponder, Animated, Easing, Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, CheckBox, Switch, TextInput, Button, Alert, Vibration, } from 'react-native';
+import {PanResponder,
+        SafeAreaView,
+        ScrollView, 
+        StyleSheet, 
+        ActivityIndicator,
+        Text, 
+        TouchableOpacity, 
+        View, 
+        Vibration, } from 'react-native';
 import GestureComp from '../components/Gesture/Gesture.component';
 import VibrationComp from '../components/vibration/Vibration.component';
 
@@ -16,8 +24,27 @@ export default class JeanScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <GestureComp></GestureComp>
-        <VibrationComp></VibrationComp>
+        <SafeAreaView />
+        <VibrationComp cor={'red'} duracao={3000}>
+          <View>
+            <Text>Hello World</Text>
+            <ActivityIndicator/>
+          </View>
+        </VibrationComp>
+
+        <VibrationComp cor={'green'} duracao={5000}>
+          <View>
+            <Text>Hello World</Text>
+            <ActivityIndicator/>
+            <Text>Hello World</Text>
+          </View>
+        </VibrationComp>
+
+        <VibrationComp>
+          <View>
+            <Text>Hello World</Text>
+          </View>
+        </VibrationComp>
       </View>
     );
   }
