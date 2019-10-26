@@ -78,8 +78,8 @@ LayaneStack.navigationOptions = {
 LayaneStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
-  JeanStack,
   NikolasStack,
+  JeanStack,
   EmannuelStack,
   LayaneStack,
 });

@@ -27,14 +27,18 @@ export default class CardDespesa extends Component {
                         </View>
                         <Text style={estilo.card_title}>{this.props.nome}</Text>
                     </View>
-                    <Text style={estilo.card_subTitle}>{this.props.data}</Text>
-                    <Text style={estilo.card_desc}>R$ 000.000.000,00</Text>
-                    <Text style={estilo.card_subTitle}>11 - Mateus Supermercados - Cid Operária</Text>
+                    <Text style={estilo.card_subTitle}>{this.props.dataDaDespesa}</Text>
+                    <Text style={estilo.card_desc}>R$ {this.props.dinheiro}</Text>
+                    {this.props.children}
                 </View>
             </TouchableOpacity>
         );
     }
 }
+
+CardDespesa.defaultProps = {
+    dinheiro: 0.00,
+};
 
 const estilo = StyleSheet.create({
     card_title: {
