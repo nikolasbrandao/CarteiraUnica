@@ -7,6 +7,7 @@ import {SafeAreaView,
         View, 
         FlatList, } from 'react-native';
 import CardTemporalComp from '../components/card/cardTemporal.component';
+import GestureComp from '../components/Gesture/Gesture.component';
 
 export default class JeanScreen extends Component {
 
@@ -44,9 +45,10 @@ export default class JeanScreen extends Component {
 
     const hour = new Date().getHours();
     const min = new Date().getMinutes();
+    const sec = new Date().getSeconds();
 
     that.setState({
-      hora: hour + ':' + min,
+      hora: hour + ':' + min + ':' + sec,
     });
   }
 
@@ -62,7 +64,7 @@ export default class JeanScreen extends Component {
           horizontal = {true}
           showsHorizontalScrollIndicator={false}
           data = {this.state.medicoes}
-          keyExtractor={(item, index) => 'key'+index }
+          keyExtractor={(item, index) => 'key' + index }
           renderItem = {({item, index}) => this.renderizarItem(item, index)}
         />
       </View>
