@@ -1,20 +1,15 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, {Component} from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
-  CheckBox,
-  Switch,
-  TextInput,
-  FlatList
+  FlatList,
+  SafeAreaView,
+  Text,
+  ActivityIndicator
 } from 'react-native';
 
-import { MonoText } from '../components/StyledText';
 import CardDespesa from '../components/card/cardDespesa.component';
 
 
@@ -23,42 +18,47 @@ export default class NikolasScreen extends Component{
   constructor(props){
     super(props);
     this.state = {
-      estaAtivado: false,
-      text: '',
       listaDeDespesas : [
         {
           nome: 'Nikolas',
-          data: '16/10/2019'
+          data: '16/10/2019',
+          valor: 100,
         },
         {
           nome: 'Layane',
-          data: '17/10/2019'
+          data: '17/10/2019',
+          valor: 200,
         },
         {
           nome: 'Jean',
-          data: '14/10/2019'
+          data: '14/10/2019',
+          valor: 250,
         },
         {
           nome: 'Emanuel',
-          data: '12/10/2019'
+          data: '12/10/2019',
+          valor: 255.2,
         },
       ]
     };
   }
 
-  renderCardsDespesa(item, index) {
-    const {nome, data} = item;
+  renderizaItem(item, index) {
     return (
-      <CardDespesa nome={nome} data={data}/>
+      <CardDespesa nome={item.nome} dataDaDespesa={item.data} dinheiro={item.valor}>
+        <Text>Olá mundo.</Text>
+        <ActivityIndicator />
+      </CardDespesa>
     );
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <SafeAreaView />
         <FlatList
           data={this.state.listaDeDespesas}
-          renderItem={( {item, index} ) =>  this.renderCardsDespesa(item, index)}
+          renderItem={({item, index}) => this.renderizaItem(item, index)}
         />
       </View>
     );
